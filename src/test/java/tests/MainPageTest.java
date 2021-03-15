@@ -3,8 +3,7 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -26,5 +25,16 @@ public class MainPageTest extends BaseTest {
 
         $(".cookie-notification__text").shouldHave(text("Оставаясь на нашем сайте, вы соглашаетесь на использование cookie-файлов"));
         $(".cookie-notification__button").shouldBe(visible);
+    }
+
+    @DisplayName("Окно согласия испозование cookie-файлов пропадает после согласия")
+    @Test
+    void cookieNotificationDisappearsAfterConsent() {
+        open("");
+
+        $(".cookie-notification__text").shouldBe(visible);
+        $(".cookie-notification__button").click();
+        $("cookie-notification__text").shouldBe(disappear);
+
     }
 }
