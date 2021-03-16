@@ -27,7 +27,7 @@ public class MainPageTest extends BaseTest {
         $(".cookie-notification__button").shouldBe(visible);
     }
 
-    @DisplayName("Окно согласия испозование cookie-файлов пропадает после согласия")
+    @DisplayName("Окно согласия использования cookie-файлов пропадает после принятия соглашения")
     @Test
     void cookieNotificationDisappearsAfterConsent() {
         open("");

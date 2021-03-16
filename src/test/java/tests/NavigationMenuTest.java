@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class NavigationMenuTest extends BaseTest {
     @DisplayName("Навигационная панель отображает разделы")
     @Test
-    void navigatoinMenuContainsSections() {
+    void navigationMenuContainsSections() {
         open("");
         $$("#navMenuBlock").shouldHave(texts("Наши работы О нас Карьера Блог Контакты"));
     }

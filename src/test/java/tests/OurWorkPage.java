@@ -4,8 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.Condition.href;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class OurWorkPage extends BaseTest {
@@ -21,6 +20,7 @@ public class OurWorkPage extends BaseTest {
     @Test
     void checkDisplayOfWorkTable() {
         open("/work");
+        $(".work-list").shouldHave(visible);
         $$(".work-list__item").shouldHave(size(7));
     }
 }
