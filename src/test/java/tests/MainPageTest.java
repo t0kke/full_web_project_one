@@ -6,35 +6,42 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 
 public class MainPageTest extends BaseTest {
     @DisplayName("Проверка отображения названия компании, заголовка и подзаголовка в блоке с видео")
     @Test
     void titleMainTest() {
-        open("");
+        step("Открываем главную страницу", () -> open(""));
 
-        $(".jumbotron-home__label").shouldHave(text("Distillery"));
-        $(".jumbotron-home__title").shouldHave(text("РАЗРАБОТКА И ДИЗАЙН"));
-        $(".jumbotron-home__subtitle").shouldHave(text("ВЕБ-СЕРВИСОВ И МОБИЛЬНЫХ ПРИЛОЖЕНИЙ"));
+        step("Проверяем наличие заголовка и подзаголовков главной страницы", () -> {
+            $(".jumbotron-home__label").shouldHave(text("Distillery"));
+            $(".jumbotron-home__title").shouldHave(text("РАЗРАБОТКА И ДИЗАЙН"));
+            $(".jumbotron-home__subtitle").shouldHave(text("ВЕБ-СЕРВИСОВ И МОБИЛЬНЫХ ПРИЛОЖЕНИЙ"));
+        });
     }
 
     @DisplayName("Отображается всплывающее окно с согласием на использование cookie-файлов")
     @Test
     void cookieNotification() {
-        open("");
+        step("Открываем главную страницу", () -> open(""));
 
-        $(".cookie-notification__text").shouldHave(text("Оставаясь на нашем сайте, вы соглашаетесь на использование cookie-файлов"));
-        $(".cookie-notification__button").shouldBe(visible);
+        step("Проверяем наличие и текст поп-аппа использования куков", () -> {
+            $(".cookie-notification__text").shouldHave(text
+                    ("Оставаясь на нашем сайте, вы соглашаетесь на использование cookie-файлов"));
+            $(".cookie-notification__button").shouldBe(visible);
+        });
     }
 
     @DisplayName("Окно согласия использования cookie-файлов пропадает после принятия соглашения")
     @Test
     void cookieNotificationDisappearsAfterConsent() {
-        open("");
+        step("Открываем главную страницу", () -> open(""));
 
-        $(".cookie-notification__text").shouldBe(visible);
-        $(".cookie-notification__button").click();
-        $("cookie-notification__text").shouldBe(disappear);
-
+        step("Проверяем наличие и текст поп-аппа использования куков", () -> {
+            $(".cookie-notification__text").shouldBe(visible);
+            $(".cookie-notification__button").click();
+            $("cookie-notification__text").shouldBe(disappear);
+        });
     }
 }

@@ -6,21 +6,28 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class OurWorkPage extends BaseTest {
     @DisplayName("На странице отображается кнопка обратной связи \"Напишите нам\"")
     @Test
     void checkFeedbackButton() {
-        open("/work");
-        $(".jumbotron_details .styleguide-button_medium").shouldHave(text("Напишите нам"))
-                .shouldHave(href("https://distillery.com/ru/contact/"));
+        step("Открываем страницу \"Наши работы\"", () -> open("/work"));
+
+        step("Проверям наличие кнопки и ссылку в ней", () -> {
+            $(".jumbotron_details .styleguide-button_medium").shouldHave(text("Напишите нам"))
+                    .shouldHave(href("https://distillery.com/ru/contact/"));
+        });
     }
 
     @DisplayName("На странице отображается grid выполненных работ")
     @Test
     void checkDisplayOfWorkTable() {
-        open("/work");
-        $(".work-list").shouldHave(visible);
-        $$(".work-list__item").shouldHave(size(7));
+        step("Открываем страницу \"Наши работы\"", () -> open("/work"));
+
+        step("Проверяем отображение блоков работ и их количество", () -> {
+            $(".work-list").shouldHave(visible);
+            $$(".work-list__item").shouldHave(size(7));
+        });
     }
 }
