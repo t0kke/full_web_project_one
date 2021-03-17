@@ -1,6 +1,7 @@
 package tests;
 
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +24,7 @@ public class MainPageTest extends BaseTest {
         });
     }
 
+    @Story("Политика конфиденциальности")
     @DisplayName("Отображается всплывающее окно с согласием на использование cookie-файлов")
     @Test
     void cookieNotification() {
@@ -35,6 +37,7 @@ public class MainPageTest extends BaseTest {
         });
     }
 
+    @Story("Политика конфиденциальности")
     @DisplayName("Окно согласия использования cookie-файлов пропадает после принятия соглашения")
     @Test
     void cookieNotificationDisappearsAfterConsent() {
