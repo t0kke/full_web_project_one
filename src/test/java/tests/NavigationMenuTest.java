@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,7 @@ import static com.codeborne.selenide.Condition.href;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
+@Feature("Navigation menu tests")
 public class NavigationMenuTest extends BaseTest {
     @DisplayName("Навигационная панель отображает разделы")
     @Test
