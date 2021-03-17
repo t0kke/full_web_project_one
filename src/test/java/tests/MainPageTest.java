@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
@@ -49,4 +50,17 @@ public class MainPageTest extends BaseTest {
             $("cookie-notification__text").shouldBe(disappear);
         });
     }
+
+    @AllureId("1940")
+    @DisplayName("Проверка отображения названия компании, заголовка и подзаголовка в блоке с видео")
+    @Test
+    void titleClientageTest() {
+        step("Открываем главную страницу", () -> open(""));
+
+        step("Проверяем наличие заголовка в блоке с клиентами", () -> {
+            $(".card-home_startups .card-home__title").shouldHave(text("стартапы"));
+
+        });
+    }
+
 }
