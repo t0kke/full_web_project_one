@@ -8,12 +8,14 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven {url = "https://dl.bintray.com/qameta/maven-unstable/"}
 }
 def allureVersion = "2.13.8",
     selenideVersion = "5.19.0",
     junitVersion = "5.7.0",
     javafakerVersion = "1.0.2",
-    ownerVersion = "1.0.12"
+    ownerVersion = "1.0.12",
+    allureEEJunitVersion = "3.28.2"
 
 allure {
     version = "${allureVersion}"
@@ -27,6 +29,7 @@ dependencies {
     testImplementation (
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.qameta.allure:allure-ee-junit-platform:$allureEEJunitVersion",
             "com.github.javafaker:javafaker:$javafakerVersion",
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
             "org.junit.jupiter:junit-jupiter-params:$junitVersion",
@@ -38,6 +41,7 @@ dependencies {
 tasks.withType(Test) {
     systemProperties += System.properties
     System.setProperty("chromeoptions.prefs", "intl.accept_languages=en")
+    System.setProperty("junit.jupiter.extensions.autodetection.enabled", "true")
 
     if (System.getProperty("threads") != null) {
         systemProperties += [
