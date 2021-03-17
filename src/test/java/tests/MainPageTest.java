@@ -52,7 +52,7 @@ public class MainPageTest extends BaseTest {
     }
 
     @AllureId("1940")
-    @DisplayName("Проверка отображения названия компании, заголовка и подзаголовка в блоке с видео")
+    @DisplayName("Проверка отображения блока \"Стартапы\" ")
     @Test
     void titleClientageTest() {
         step("Открываем главную страницу", () -> open(""));
