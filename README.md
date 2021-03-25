@@ -18,4 +18,4 @@
 
 ## Technology Stack
 
-- Java, JUnit5, Gradle, Selenide, Allure SE, Selenoid, Jenkins, Integration with telegram (reports)
+- Java, JUnit5, Gradle, Selenide, Allure TestOps, Selenoid, Jenkins, Integration with telegram (reports)

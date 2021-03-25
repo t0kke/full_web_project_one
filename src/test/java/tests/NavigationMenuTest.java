@@ -27,15 +27,15 @@ public class NavigationMenuTest extends BaseTest {
         step("Открываем главную страницу", () -> open(""));
 
         step("Проверяем соотвествие разделов ссылкам ", () -> {
-            $("div[class='navigation-menu__container'] div:nth-child(1) a")
+            $("div.navigation-menu__container div:nth-child(1) a")
                     .shouldHave(href("https://distillery.com/ru/work/"));
-            $("div[class='navigation-menu__container'] div:nth-child(2) a")
+            $("div.navigation-menu__container div:nth-child(2) a")
                     .shouldHave(href("https://distillery.com/ru/about/"));
-            $("div[class='navigation-menu__container'] div:nth-child(3) a")
+            $("div.navigation-menu__container div:nth-child(3) a")
                     .shouldHave(href("https://distillery.com/ru/career-russia/"));
-            $("div[class='navigation-menu__container'] div:nth-child(4) a")
+            $("div.navigation-menu__container div:nth-child(4) a")
                     .shouldHave(href("https://distillery.com/ru/blog/"));
-            $("div[class='navigation-menu__container'] div:nth-child(5) a")
+            $("div.navigation-menu__container div:nth-child(5) a")
                     .shouldHave(href("https://distillery.com/ru/contact/"));
         });
     }

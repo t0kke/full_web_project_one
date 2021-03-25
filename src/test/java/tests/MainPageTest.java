@@ -32,8 +32,8 @@ public class MainPageTest extends BaseTest {
         step("Открываем главную страницу", () -> open(""));
 
         step("Проверяем наличие и текст поп-аппа использования куков", () -> {
-            $(".cookie-notification__text").shouldHave(text
-                    ("Оставаясь на нашем сайте, вы соглашаетесь на использование cookie-файлов"));
+            $(".cookie-notification__text").shouldHave
+                    (text("Оставаясь на нашем сайте, вы соглашаетесь на использование cookie-файлов"));
             $(".cookie-notification__button").shouldBe(visible);
         });
     }

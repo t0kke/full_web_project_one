@@ -10,6 +10,7 @@ repositories {
     mavenCentral()
     maven {url = "https://dl.bintray.com/qameta/maven-unstable/"}
 }
+
 def allureVersion = "2.13.8",
     selenideVersion = "5.19.0",
     junitVersion = "5.7.0",
@@ -25,6 +26,7 @@ allure {
         version = "${allureVersion}"
     }
 }
+
 dependencies {
     testImplementation (
             "com.codeborne:selenide:$selenideVersion",
@@ -63,5 +65,4 @@ tasks.withType(Test) {
 
 test {
     useJUnitPlatform()
-    systemProperties(System.getProperties())
 }
