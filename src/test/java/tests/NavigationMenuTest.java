@@ -4,8 +4,9 @@ import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.CollectionCondition.texts;
+import static com.codeborne.selenide.CollectionCondition.containExactTextsCaseSensitive;
 import static com.codeborne.selenide.Condition.href;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -17,7 +18,7 @@ public class NavigationMenuTest extends BaseTest {
         step("Открываем главную страницу", () -> open(""));
 
         step("Проверяем наличие всех разделов в навигационном меню", () -> {
-            $$("#navMenuBlock").shouldHave(texts("Наши работы О нас Карьера Блог Контакты"));
+            $$("nav[id='navMenuBlock'] div a").shouldHave(containExactTextsCaseSensitive("Наши работы", "О нас", "Карьера", "Блог", "Контакты"));
         });
     }
 
@@ -27,15 +28,15 @@ public class NavigationMenuTest extends BaseTest {
         step("Открываем главную страницу", () -> open(""));
 
         step("Проверяем соотвествие разделов ссылкам ", () -> {
-            $("div.navigation-menu__container div:nth-child(1) a")
+            $("#navMenuBlock").find(byText("Наши работы"))
                     .shouldHave(href("https://distillery.com/ru/work/"));
-            $("div.navigation-menu__container div:nth-child(2) a")
+            $("#navMenuBlock").find(byText("О нас"))
                     .shouldHave(href("https://distillery.com/ru/about/"));
-            $("div.navigation-menu__container div:nth-child(3) a")
+            $("#navMenuBlock").find(byText("Карьера"))
                     .shouldHave(href("https://distillery.com/ru/career-russia/"));
-            $("div.navigation-menu__container div:nth-child(4) a")
+            $("#navMenuBlock").find(byText("Блог"))
                     .shouldHave(href("https://distillery.com/ru/blog/"));
-            $("div.navigation-menu__container div:nth-child(5) a")
+            $("#navMenuBlock").find(byText("Контакты"))
                     .shouldHave(href("https://distillery.com/ru/contact/"));
         });
     }
